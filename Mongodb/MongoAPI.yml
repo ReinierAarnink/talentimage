@@ -30,11 +30,9 @@ schemes:
 paths:
   /foto:
     post:
-      tags:
-      - "pet"
       summary: "Add a new foto to the store"
       description: ""
-      operationId: "addPet"
+      operationId: "addFoto"
       consumes:
       - "application/json"
       - "application/xml"
@@ -55,7 +53,11 @@ paths:
       - petstore_auth:
         - "write:fotos"
         - "read:fotos"
-
+    get:
+      summary: "get amount of recognised fruit in the database"
+      description: ""
+      operationId:  "getFoto"
+      
 securityDefinitions:
   petstore_auth:
     type: "oauth2"
