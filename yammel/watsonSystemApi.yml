@@ -40,4 +40,23 @@ servers:
           description: The given input is not a right picture.
         default:
           description: Unexpected error
-
+definitions:
+  inputplaatje:
+    required:
+      - catagorie
+      - score
+    properties:
+      catagorie:
+        type: string
+      score:
+        type: float
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
