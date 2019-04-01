@@ -49,15 +49,27 @@ paths:
       responses:
         405:
           description: "Invalid input"
+        200:
+          description: "successful operation"
       security:
       - petstore_auth:
         - "write:fotos"
         - "read:fotos"
     get:
       summary: "get amount of recognised fruit in the database"
-      description: ""
+      description: "returns an array of fruits"
       operationId:  "getFoto"
-      
+      parameters: []
+      responses:
+        405:
+          description: "Invalid input"
+        200:
+          description: "succesful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "integer"
+              format: "int32"
 securityDefinitions:
   petstore_auth:
     type: "oauth2"
