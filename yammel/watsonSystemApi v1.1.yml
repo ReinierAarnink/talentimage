@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: WatsonSystemApi
+  description: The interface between the Master API and Watson
+  version: 0.1.9
+
+servers:
+  - url: http://watsonsystemapi.example.com/
+    description: The url of the api.
+
+  /inputplaatje/{categorie}:
+    post:
+      summary: receives the picture to and send it to Watson
+      parameters:
+        - name: categorie
+          in: path
+          required: true
+          description: The categorie of where to find the answer bv "fruit"
+          schema:
+            type: picture
+            format: [.jpg, .jpeg, png]
+            minimum: 1
+            maximum: 1
+      responses:
+        '200':
+          description: The result of Watson.
+          content: 
+            application/json: JSON
+              schema:
+                type: object
+                properties:
+                  categorie:
+                    type: string
+                    example: "banana"
+                  score:
+                    description: number between zero and one
+                    type: float
+                    example: 0.224625
+        '400':
+          description: The given input is not a right picture.
+        default:
+          description: Unexpected error
+definitions:
+  inputplaatje:
+    required:
+      - categorie
+      - score
+    properties:
+      categorie:
+        type: string
+      score:
+        type: float
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
