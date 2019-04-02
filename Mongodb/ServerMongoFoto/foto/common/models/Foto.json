@@ -1,5 +1,5 @@
 {
-  "name": "Foto",
+  "name": "Image",
   "base": "PersistedModel",
   "options": {
     "validateUpsert": true
@@ -14,10 +14,6 @@
       "minimum": 0,
       "exclusiveMaximum": 1,
       "required": true
-    },
-    "requestdatum": {
-      "type": "date-time",
-      "required": false
     }
   }
 }

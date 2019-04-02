@@ -29,7 +29,7 @@
     "dataSource": "db",
     "public": false
   },
-  "Foto": {
+  "Image": {
     "dataSource": "ImageRec",
     "public": true
   }
