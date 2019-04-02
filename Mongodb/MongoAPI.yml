@@ -1,38 +1,27 @@
 swagger: "2.0"
 info:
-  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
-  version: "1.0.0"
-  title: "Swagger Petstore"
-  termsOfService: "http://swagger.io/terms/"
-  contact:
-    email: "apiteam@swagger.io"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "petstore.swagger.io"
-basePath: "/v2"
+  description: "The YAML file of the sysAPI for MongoDB."
+  version: "1.0.1"
+  title: "MongoDB Image Recognition"
 tags:
-- name: "pet"
-  description: "Everything about your Pets"
-  externalDocs:
-    description: "Find out more"
-    url: "http://swagger.io"
-- name: "store"
-  description: "Access to Petstore orders"
-- name: "user"
-  description: "Operations about user"
-  externalDocs:
-    description: "Find out more about our store"
-    url: "http://swagger.io"
+- name: "image"
+  description: "the photo that will be send to Watson"
+- name: "class"
+  description: "classification of the image"
+- name: "score"
+  description: "the score watson correctly classified the image"
+- name: "count"
+  description: "the number of times Watson recognized the same image type"
 schemes:
 - "https"
 - "http"
 paths:
   /foto:
     post:
-      summary: "Add a new foto to the store"
-      description: ""
-      operationId: "addFoto"
+      tags:
+      - "image"
+      summary: "Add a new image to the database"
+      operationId: "addImage"
       consumes:
       - "application/json"
       - "application/xml"
@@ -42,22 +31,20 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "foto object that needs to be added to the database"
+        description: "image that needs to be added to the database"
         required: true
         schema:
-          $ref: "#/definitions/foto"
+          $ref: "#/definitions/image"
       responses:
         405:
           description: "Invalid input"
         200:
           description: "successful operation"
-      security:
-      - petstore_auth:
-        - "write:fotos"
-        - "read:fotos"
     get:
-      summary: "get amount of recognised fruit in the database"
-      description: "returns an array of fruits"
+      tags:
+      - "count"
+      summary: "get count of recognised office furniture in the database"
+      description: "returns a number of class entries"
       operationId:  "getFoto"
       parameters: []
       responses:
@@ -67,26 +54,14 @@ paths:
           description: "succesful operation"
           schema:
             type: "object"
-            additionalProperties:
-              type: "integer"
-              format: "int32"
-securityDefinitions:
-  petstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:pets: "modify pets in your account"
-      read:pets: "read your pets"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
+            properties:
+              class_entries:
+                type: "integer"
+                format: "int32"
 definitions:
-  foto:
+  image:
     type: "object"
     required:
-    - "requestId"
     - "class"
     - "score"
     properties:
@@ -95,7 +70,7 @@ definitions:
         format: "int64"
       class:
         type: "string"
-        example: "appel"
+        example: "clock"
       score:
         type: "number"
         format: "float"
