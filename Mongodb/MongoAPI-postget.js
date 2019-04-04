@@ -7,7 +7,7 @@ Request
         "url": "http://localhost:3000/api/Images",
         "body": JSON.stringify({
             "class": "clock",
-            "score": "0.54"
+            "score": "0.785"
         })
     }, (error, response, body) => {
         if (error) {
