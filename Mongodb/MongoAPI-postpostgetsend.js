@@ -6,17 +6,17 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//incoming request from processAPI at /post endpoint:
+
 app.post('/post', function (req, res) {
-    console.log(req.headers)
     var mongo = req.body;
-    console.log(mongo)
     var mongoclass = req.body.class
     Response = new Object;
     Response.Image = Object;
     Response.Count = Number;
 
 
-    // make post+get request to MongoDB 
+    // make post+get request to MongoDB with request body from processAPI 
     Request
         .post({
             "headers": { "content-type": "application/json" },
@@ -29,7 +29,7 @@ app.post('/post', function (req, res) {
 
             Response.Image = JSON.parse(body);
 
-            //console.log(Class + "3");
+            console.log(Response.Image);
         })
         .pipe(Request.get("http://localhost:3000/api/Images", (error, response, body) => {
             if (error) {
@@ -44,10 +44,9 @@ app.post('/post', function (req, res) {
             console.log(Response.Count);
 
         }));
-    //console.log(Response.Count + "6");
-    //console.log(Class + "7");
     
-    res.setTimeout(1000,function(){
+    //send response to processAPI; timeout so mongo can respond ^^
+    res.setTimeout(500,function(){
         res.send(JSON.stringify(Response))
         delete Response.Count;
         delete Response.Image;
