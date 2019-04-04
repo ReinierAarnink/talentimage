@@ -7,7 +7,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //incoming request from processAPI at /post endpoint:
-
 app.post('/post', function (req, res) {
     var mongo = req.body;
     var mongoclass = req.body.class
@@ -42,16 +41,15 @@ app.post('/post', function (req, res) {
             //console.log(newBody + "4");
             Response.Count = newBody.length;
             console.log(Response.Count);
-
         }));
-    
+
     //send response to processAPI; timeout so mongo can respond ^^
-    res.setTimeout(500,function(){
+    res.setTimeout(500, function () {
         res.send(JSON.stringify(Response))
         delete Response.Count;
         delete Response.Image;
     });
 });
 app.listen(4000, function () {
-    console.log("Started on PORT 4000");
+    console.log("Started on port 4000");
 });
