@@ -1,0 +1,5 @@
+---
+applications:
+ - name: WatsonAppData
+   random-route: true
+   memory: 128M
