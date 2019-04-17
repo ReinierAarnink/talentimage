@@ -2,6 +2,8 @@ var Request = require("request");
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
+var mongoURL = "http://localhost:3000/api/Images"; // restApiRoot (/api), localhost and port from config.json (talentimage/Mongodb/ServerMongoFoto/server/)
+var serverPort = 4000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,7 +21,7 @@ app.post('/post', function (req, res) {
     Request
         .post({
             "headers": { "content-type": "application/json" },
-            "url": "http://localhost:3000/api/Images",
+            "url": mongoURL,
             "body": JSON.stringify(mongo)
         }, (error, response, body) => {
             if (error) {
@@ -30,7 +32,7 @@ app.post('/post', function (req, res) {
 
             console.log(Response.Image);
         })
-        .pipe(Request.get("http://localhost:3000/api/Images", (error, response, body) => {
+        .pipe(Request.get(mongoURL, (error, response, body) => {
             if (error) {
                 return console.dir(error);
             }
@@ -50,6 +52,6 @@ app.post('/post', function (req, res) {
         delete Response.Image;
     });
 });
-app.listen(4000, function () {
-    console.log("Started on port 4000");
+app.listen(serverPort, function () {
+    console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
 });
