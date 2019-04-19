@@ -1,0 +1,7 @@
+---
+applications:
+ - name: WatsonAppData-predix-nodejs-starter Change
+   command: node server/server.js
+   random-route: true
+   buildpack: nodejs_buildpack
+   memory: 128M
