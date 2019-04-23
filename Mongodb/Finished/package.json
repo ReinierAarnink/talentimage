@@ -1,0 +1,21 @@
+{
+  "name": "finished",
+  "version": "1.0.0",
+  "main": "./MongoAPI-postpostgetsend.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {},
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "license": "UNLICENSED",
+  "description": "finished"
+}

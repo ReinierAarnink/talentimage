@@ -40,7 +40,6 @@ app.post('/post', function (req, res) {
             newBody = jsondata.filter(function (o) {
                 return (o.class === mongoclass)
             })
-            //console.log(newBody + "4");
             Response.Count = newBody.length;
             console.log(Response.Count);
         }));
