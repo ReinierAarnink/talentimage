@@ -1,0 +1,6 @@
+---
+applications:
+ - name: WatsonAppData
+   random-route: true
+   host: https://watsonappdata.eu-gb.mybluemix.net/
+   memory: 128M
