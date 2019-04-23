@@ -1,0 +1,6 @@
+---
+applications:
+ - name: WatsonProcessAPI
+   buildpack: sdk-for-nodejs
+   random-route: true
+   memory: 128M
