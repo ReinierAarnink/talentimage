@@ -1,5 +1,5 @@
 ---
 applications:
- - name: WatsonAppData
+ - name: MongoAPIv2
    random-route: true
    memory: 128M

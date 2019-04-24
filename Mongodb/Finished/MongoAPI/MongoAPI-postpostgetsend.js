@@ -2,7 +2,7 @@ var Request = require("request");
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
-var mongoURL = "http://localhost:3000/api/Images"; // restApiRoot (/api), localhost and port from config.json (talentimage/Mongodb/ServerMongoFoto/server/)
+var mongoURL = "http://mongodb01.eu-gb.mybluemix.net/api/Images"; // restApiRoot (/api), localhost and port from config.json (talentimage/Mongodb/ServerMongoFoto/server/)
 var serverPort = process.env.PORT || 4000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
