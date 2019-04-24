@@ -2,7 +2,7 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-var port = (process.env.VCAP_APP_PORT || 3000)
+//var port = (process.env.PORT || 3000)
 var app = module.exports = loopback();
 
 app.start = function() {

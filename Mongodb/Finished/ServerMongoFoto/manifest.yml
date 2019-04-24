@@ -1,6 +1,4 @@
----
 applications:
- - name: WatsonAppData
+ - name: MongoDB01
    random-route: true
-   host: https://watsonappdata.eu-gb.mybluemix.net/
-   memory: 128M
+   memory: 256M

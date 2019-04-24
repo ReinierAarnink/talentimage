@@ -1,7 +1,8 @@
----
 applications:
- - name: WatsonAppData-predix-nodejs-starter Change
-   command: node server/server.js
-   random-route: true
-   buildpack: nodejs_buildpack
-   memory: 128M
+- name: MongoDB01
+  disk_quota: 1G
+  instances: 1
+  memory: 256M
+  routes:
+  - route: MongoDB01.eu-gb.mybluemix.net
+  stack: cflinuxfs2

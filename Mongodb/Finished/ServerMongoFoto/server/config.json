@@ -1,7 +1,7 @@
 {
   "restApiRoot": "/api",
-  "host": "process.env.VCAP_APP_HOST || 'localhost'",
-  "port": "process.env.VCAP_APP_PORT || 443",
+  "host": "localhost",
+  "port": "3000",
   "remoting": {
     "context": false,
     "rest": {
