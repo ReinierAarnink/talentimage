@@ -1,0 +1,4 @@
+applications:
+ - name: MongoDB01
+   random-route: true
+   memory: 256M
